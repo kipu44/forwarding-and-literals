@@ -1,11 +1,10 @@
-Storing git credentials:
+### Storing git credentials
 
 $ git config credential.helper store
 
-Then the next time you are asked for credentials they will be stored in a plain file.
+Then the next time you are asked for credentials they will be stored in plain text in a file.
 
-
-Bibliography:
+### Bibliography
 
 - https://en.cppreference.com/w/cpp/language/user_literal
 - https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique
