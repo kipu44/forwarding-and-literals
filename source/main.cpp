@@ -1,17 +1,18 @@
 
-#include "foo-bar.h"
-#include "indent.h"
-#include "raii.h"
+#include <iostream>
+#include <vector>
+
+unsigned int operator""elements(const unsigned long long n)
+{
+    return static_cast<int>(n);
+}
 
 int main()
 {
-    Indent::i = 2;
-    Indent::n = 0;
+    const std::vector<int> a(3elements, 1);
 
-    const Raii r(9);
-
-    Bar b1(Foo{});
-    const Bar b2(std::move(b1));
+    std::cout << "size = " << a.size() << "\n";
+    std::cout << "second element = " << a[1u] << "\n";
 
     return 0;
 }
