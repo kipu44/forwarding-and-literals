@@ -22,5 +22,10 @@ int main()
 
         const auto b1 = makeUnique<Bar>(Bar{Foo{}});
     }
+    {
+        const Raii r2{2};
+
+        const auto b2 = makeUnique<Bar>(Foo{});
+    }
     return 0;
 }
