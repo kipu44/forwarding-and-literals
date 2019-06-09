@@ -27,5 +27,15 @@ int main()
 
         const auto b2 = makeUnique<Bar>(Foo{});
     }
+    {
+        const Raii r3{3};
+
+        const auto f3 = makeUnique<Foo>();
+    }
+    {
+        const Raii r4{4};
+
+        const auto p4 = makeUnique<std::pair<Foo, Bar>>(Foo{}, Foo{});
+    }
     return 0;
 }
