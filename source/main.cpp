@@ -6,7 +6,7 @@
 
 int main()
 {
-    const std::array<int, 3_elements> a = {1, 2, 3};
+    const std::array<int, 3_elements> a = {1, 2, 3}; // ???
 
     std::cout << "size = " << a.size() << "\n";
     std::cout << "second element = " << a[1u] << "\n";
