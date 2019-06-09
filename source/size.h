@@ -2,7 +2,14 @@
 #ifndef __SIZE_H__
 #define __SIZE_H__
 
-constexpr unsigned int operator""_elements(const unsigned long long n)
+struct Size
+{
+    Size(const unsigned int n) : s(n) {}
+
+    const unsigned int s;
+};
+
+constexpr Size operator""_elements(const unsigned long long n)
 {
     return static_cast<unsigned int>(n);
 }
