@@ -4,7 +4,9 @@
 
 struct Size
 {
-    Size(const unsigned int n) : s(n) {}
+    constexpr Size(const unsigned int n) : s(n) {}
+
+    constexpr operator unsigned int() { return s; }
 
     const unsigned int s;
 };
