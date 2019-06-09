@@ -1,6 +1,6 @@
 
+#include <array>
 #include <iostream>
-#include <vector>
 
 unsigned int operator""_elements(const unsigned long long n)
 {
@@ -9,7 +9,7 @@ unsigned int operator""_elements(const unsigned long long n)
 
 int main()
 {
-    const std::vector<int> a(3_elements, 1);
+    const std::array<int, 3_elements> a = {1, 2, 3};
 
     std::cout << "size = " << a.size() << "\n";
     std::cout << "second element = " << a[1u] << "\n";
