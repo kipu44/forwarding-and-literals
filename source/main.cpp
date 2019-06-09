@@ -1,17 +1,15 @@
 
-#include "foo-bar.h"
-#include "indent.h"
-#include "raii.h"
+#include <iostream>
+#include <string>
+#include <type_traits>
 
 int main()
 {
-    Indent::i = 2;
-    Indent::n = 0;
+    std::cout << std::boolalpha;
 
-    const Raii r(9);
+    const auto hello = "hello";
 
-    Bar b1(Foo{});
-    const Bar b2(std::move(b1));
+    std::cout << std::is_same<std::decay_t<decltype(hello)>, std::string>::value << "\n";
 
     return 0;
 }
