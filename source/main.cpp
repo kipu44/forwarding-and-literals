@@ -8,10 +8,10 @@
 
 #ifndef makeUnique
 template <typename T, typename ... Arg>
-std::unique_ptr<T> makeUnique(Arg && ... arg)
+auto makeUnique(Arg && ... arg)
 {
     const Raii r0{0};
-    return T(std::forward<Arg>(arg)...);
+    return std::unique_ptr<T>(new T(std::forward<Arg>(arg)...));
 }
 #endif
 
