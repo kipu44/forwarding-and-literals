@@ -8,10 +8,10 @@
 
 #ifndef makeUnique
 template <typename T>
-auto makeUnique(T arg)
+auto makeUnique(T && arg)
 {
     const Raii r0{0};
-    return T(arg);
+    return T(std::forward<T>(arg));
 }
 #endif
 
