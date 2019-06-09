@@ -8,7 +8,7 @@
 
 #ifndef makeUnique
 template <typename T>
-auto makeUnique = [](auto && ... arg)
+auto makeUnique = [](auto && ... arg) // [](auto && ... arg) <- C++14
 {
     const Raii r0{0};
     return std::unique_ptr<T>(new T(std::forward<decltype(arg)>(arg)...));
