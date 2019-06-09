@@ -23,26 +23,62 @@
 // auto makeUnique(Args && ... args)
 // {
 //     const Raii r0{0};
+//     return std::unique_ptr<T>(new T(args...));
+// }
+
+// template<typename T, typename ... Args>
+// auto makeUnique(Args && ... args)
+// {
+//     const Raii r0{0};
 //     return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 // }
 
-// #define makeUnique std::make_unique
+#define makeUnique std::make_unique
 
-template<typename T, typename ... Args>
-auto makeUnique(Args && ... args)
-{
-    const Raii r0{0};
-    return std::unique_ptr<T>(new T(args...));
-}
+// template<typename T>
+// auto makeUnique = [](auto && ... args)
+// {
+//     const Raii r0{0};
+//     return std::unique_ptr<T>(new T(args...));
+// };
+
+// template<typename T>
+// auto makeUnique = [](auto && ... args)
+// {
+//     const Raii r0{0};
+//     return std::unique_ptr<T>(new T(std::forward<decltype(args)>(args)...));
+// };
+
+// template<typename T>
+// auto makeUnique = [](auto && ... args)
+// {
+//     const Raii r0{0};
+//     return T(std::forward<decltype(args)>(args)...);
+// };
+
+// template<typename T>
+// auto makeUnique = [](auto && ... args)
+// {
+//     const Raii r0{0};
+//     return T(args...);
+// };
+
+// template<typename T>
+// auto makeUnique = [](auto ... args)
+// {
+//     const Raii r0{0};
+//     return T(args...);
+// };
+
+// template<typename T>
+// auto makeUnique = [](auto args)
+// {
+//     const Raii r0{0};
+//     return T(args);
+// };
 
 int main()
 {
-    {
-        const Raii r1{9};
-
-        Bar b1(Foo{});
-        const Bar b2(std::move(b1));
-    }
     {
         const Raii r1{1};
 
@@ -51,14 +87,17 @@ int main()
     {
         const Raii r2{2};
 
-        Foo f2;
-        const auto b2 = makeUnique<Bar>(std::move(f2));
+        const auto b2 = makeUnique<Bar>(Bar{Foo{}});
     }
     {
         const Raii r3{3};
 
-        const Foo f3;
-        const auto b3 = makeUnique<Bar>(f3);
+        const auto f3 = makeUnique<Foo>();
+    }
+    {
+        const Raii r4{4};
+
+        const auto p4 = makeUnique<std::pair<Foo, Bar>>(Foo{}, Bar{Foo{}});
     }
     return 0;
 }
