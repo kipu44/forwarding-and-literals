@@ -11,7 +11,7 @@ template <typename T>
 auto makeUnique = [](auto && ... arg)
 {
     const Raii r0{0};
-    return std::unique_ptr<T>(new T(arg...));
+    return std::unique_ptr<T>(new T(std::forward<decltype(arg)>(arg)...));
 };
 #endif
 
