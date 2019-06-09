@@ -7,11 +7,11 @@
 // #define makeUnique std::make_unique
 
 #ifndef makeUnique
-template <typename T, typename Arg>
-auto makeUnique(Arg && arg)
+template <typename T, typename ... Arg>
+auto makeUnique(Arg && ... arg)
 {
     const Raii r0{0};
-    return T(std::forward<Arg>(arg));
+    return T(std::forward<Arg>(arg)...);
 }
 #endif
 
